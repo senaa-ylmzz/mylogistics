@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Logistics - Lojistik Hizmetleri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* HEADER STYLES */
+        header {
+            background-color: #0a4d8c;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        /* NAVIGATION STYLES */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu > li {
+            position: relative;
+            margin-left: 30px;
+        }
+        
+        .menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .menu > li > a:hover {
+            color: #add8ff;
+        }
+        
+        /* DROPDOWN MENU */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 100;
+            border-radius: 4px;
+        }
+        
+        .menu > li:hover .dropdown {
+            display: block;
+        }
+        
+        .dropdown li {
+            list-style: none;
+        }
+        
+        .dropdown li a {
+            color: #0a4d8c;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown li a:hover {
+            background-color: #f0f7ff;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            height: 500px;
+            background-image: url(DALL·E 2025-03-04 02.01.10 - A high-quality, realistic image for a logistics website homepage. The image features a modern blue and black-toned design with a large truck on the ro.webp);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background-color: rgba(10, 77, 140, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 700px;
+        }
+        
+        .hero-content h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        /* SERVICES SECTION */
+        .services {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .services-text {
+            flex: 0 0 50%;
+            padding-right: 30px;
+        }
+        
+        .services-text h2 {
+            font-size: 28px;
+            color: #0a4d8c;
+            margin-bottom: 20px;
+        }
+        
+        .services-text p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .services-image {
+            flex: 0 0 45%;
+        }
+        
+        .services-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* CONTACT FORM */
+        .contact-form {
+            padding: 20px;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        
+        .contact-form h3 {
+            font-size: 22px;
+            color: #0a4d8c;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #0a4d8c;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .captcha {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .captcha input {
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            background-color: #0a4d8c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0d62b0;
+        }
+        
+        /* OFFICES SECTION */
+        .offices {
+            padding: 60px 0;
+            background-color: #f0f7ff;
+            text-align: center;
+        }
+        
+        .offices h2 {
+            font-size: 28px;
+            color: #0a4d8c;
+            margin-bottom: 40px;
+        }
+        
+        .office-locations {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .office-location {
+            flex: 0 0 18%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .office-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #0a4d8c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        
+        .office-title {
+            font-weight: 500;
+            color: #0a4d8c;
+            transition: color 0.3s;
+        }
+        
+        .office-location:hover .office-circle {
+            background-color: #0d62b0;
+            transform: scale(1.1);
+        }
+        
+        .office-location:hover .office-title {
+            color: #0d62b0;
+            font-weight: bold;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: #0a4d8c;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 0 0 30%;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #3a7db5;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #3a7db5;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">My Logistics</a>
+                <ul class="menu">
+                    <li><a href="#">Ana Sayfa</a></li>
+                    <li><a href="#">Hakkımızda</a></li>
+                    <li>
+                        <a href="#">Hizmetlerimiz</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Yurt İçi Taşımacılık</a></li>
+                            <li><a href="#">Uluslararası Taşımacılık</a></li>
+                            <li><a href="#">Depolama</a></li>
+                            <li><a href="#">Dağıtım</a></li>
+                            <li><a href="#">Proje Taşımacılığı</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">İnsan Kaynakları</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Kariyer Fırsatları</a></li>
+                            <li><a href="#">İş Başvurusu</a></li>
+                            <li><a href="#">Eğitim Programları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">İletişim</a>
+                        <ul class="dropdown">
+                            <li><a href="#">İletişim Bilgileri</a></li>
+                            <li><a href="#">Bize Ulaşın</a></li>
+                            <li><a href="#">Ofislerimiz</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Güvenilir Lojistik Çözüm Ortağınız</h1>
+            <p>My Logistics ile işinizi büyütün, sınırları aşın!</p>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services">
+        <div class="container">
+            <div class="services-container">
+                <div class="services-text">
+                    <h2>Hizmetlerimiz</h2>
+                    <p>My Logistics olarak, işletmenizin ihtiyaçlarına özel lojistik çözümler sunuyoruz. Yurt içi ve uluslararası taşımacılık, depolama, dağıtım ve proje taşımacılığı hizmetlerimizle işinizi büyütmenize katkı sağlıyoruz.</p>
+                    <p>Uzman kadromuz ve geniş ağımızla, zamanında teslimat ve güvenli taşıma garantisi veriyoruz. Teknolojik altyapımız sayesinde sevkiyatlarınızı anlık olarak takip edebilir, operasyonel verimlilik sağlayabilirsiniz.</p>
+                </div>
+                <div class="services-image">
+                    <img src="DALL·E 2025-03-04 03.30.27 - A complementary image for the 'Services' section of a logistics website. The image features a professional, modern look with blue and black tones. It .jpg" alt="Lojistik Hizmetleri">
+                </div>
+            </div>
+
+            <div class="services-container" style="margin-top: 40px; flex-direction: row-reverse;">
+                <div class="services-text">
+                    <h2>İletişim Formu</h2>
+                    <div class="contact-form">
+                        <h3>Bize Ulaşın</h3>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Ad Soyad</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-posta</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mesajınız</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <div class="captcha">
+                                <input type="checkbox" id="robot" name="robot" required>
+                                <label for="robot">Ben robot değilim</label>
+                            </div>
+                            <button type="submit" class="submit-btn">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="services-image">
+                    <img src="DALL·E 2025-03-04 04.02.10 - A professional logistics-themed image with a blue and black color scheme. The image should feature elements like cargo trucks, shipping containers, an.webp" alt="İletişim">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFICES SECTION -->
+    <section class="offices">
+        <div class="container">
+            <h2>Ofislerimiz</h2>
+            <div class="office-locations">
+                <div class="office-location">
+                    <div class="office-circle">K</div>
+                    <div class="office-title">Konya</div>
+                </div>
+                <div class="office-location">
+                    <div class="office-circle">A</div>
+                    <div class="office-title">Aksaray</div>
+                </div>
+                <div class="office-location">
+                    <div class="office-circle">A</div>
+                    <div class="office-title">Afyon</div>
+                </div>
+                <div class="office-location">
+                    <div class="office-circle">A</div>
+                    <div class="office-title">Ankara</div>
+                </div>
+                <div class="office-location">
+                    <div class="office-circle">K</div>
+                    <div class="office-title">Kayseri</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>My Logistics</h3>
+                    <p>Güvenilir lojistik çözüm ortağınız olarak 2010 yılından beri hizmet vermekteyiz. Kaliteli, güvenli ve hızlı taşımacılık için bizi tercih edin.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <a href="#">Ana Sayfa</a>
+                    <a href="#">Hakkımızda</a>
+                    <a href="#">Hizmetlerimiz</a>
+                    <a href="#">İnsan Kaynakları</a>
+                    <a href="#">İletişim</a>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Adres: Lojistik Merkezi, Organize Sanayi Bölgesi, 42080 Konya</p>
+                    <p>Telefon: +90 332 123 45 67</p>
+                    <p>E-posta: info@mylogistics.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 My Logistics. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
