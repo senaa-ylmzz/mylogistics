@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Logistics - Hakkımızda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* HEADER STYLES */
+        header {
+            background-color: #0a4d8c;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        /* NAVIGATION STYLES */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu > li {
+            position: relative;
+            margin-left: 30px;
+        }
+        
+        .menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .menu > li > a:hover {
+            color: #add8ff;
+        }
+        
+        /* DROPDOWN MENU */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 100;
+            border-radius: 4px;
+        }
+        
+        .menu > li:hover .dropdown {
+            display: block;
+        }
+        
+        .dropdown li {
+            list-style: none;
+        }
+        
+        .dropdown li a {
+            color: #0a4d8c;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown li a:hover {
+            background-color: #f0f7ff;
+        }
+        
+        /* PAGE HEADER */
+        .page-header {
+            background-color: #1a5d9c;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ABOUT SECTION */
+        .about-section {
+            padding: 70px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0a4d8c;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            background-color: #0d62b0;
+            bottom: -10px;
+            left: 15%;
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-text {
+            flex: 0 0 48%;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            color: #0a4d8c;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .about-image {
+            flex: 0 0 48%;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* STATS SECTION */
+        .stats-section {
+            background-color: #f0f7ff;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            flex: 0 0 23%;
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #0a4d8c;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        /* TEAM SECTION */
+        .team-section {
+            padding: 70px 0;
+            background-color: white;
+        }
+        
+        .team-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .team-member {
+            flex: 0 0 30%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid #f0f7ff;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-name {
+            font-size: 22px;
+            color: #0a4d8c;
+            margin-bottom: 5px;
+        }
+        
+        .team-position {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .team-bio {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: #0a4d8c;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 0 0 30%;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #3a7db5;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #3a7db5;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-content, .team-container, .stats-container {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image, .team-member, .stat-item {
+                flex: 0 0 100%;
+                margin-bottom: 30px;
+            }
+            
+            .about-image {
+                margin-top: 30px;
+            }
+            
+            .menu {
+                display: none; /* Simple responsive hack - would need a proper mobile menu */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">My Logistics</a>
+                <ul class="menu">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li>
+                        <a href="#">Hizmetlerimiz</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Yurt İçi Taşımacılık</a></li>
+                            <li><a href="#">Uluslararası Taşımacılık</a></li>
+                            <li><a href="#">Depolama</a></li>
+                            <li><a href="#">Dağıtım</a></li>
+                            <li><a href="#">Proje Taşımacılığı</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">İnsan Kaynakları</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Kariyer Fırsatları</a></li>
+                            <li><a href="#">İş Başvurusu</a></li>
+                            <li><a href="#">Eğitim Programları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">İletişim</a>
+                        <ul class="dropdown">
+                            <li><a href="#">İletişim Bilgileri</a></li>
+                            <li><a href="#">Bize Ulaşın</a></li>
+                            <li><a href="#">Ofislerimiz</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Hakkımızda</h1>
+            <p>2010 yılından beri lojistik sektöründe güvenilir çözüm ortağınız olarak hizmet veriyoruz.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Biz Kimiz?</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Vizyonumuz</h3>
+                    <p>My Logistics olarak vizyonumuz, Türkiye ve dünya çapında lojistik sektöründe öncü ve yenilikçi çözümlerle müşterilerimizin rekabet gücünü artıran, sürdürülebilir ve güvenilir bir lojistik şirketi olmaktır.</p>
+                    <p>Teknolojik altyapımızı sürekli geliştirerek, müşterilerimize en hızlı, en güvenli ve en ekonomik lojistik hizmetleri sunmayı hedefliyoruz. Sektörde fark yaratan yaklaşımlarımızla, müşterilerimize özel çözümler üretmeye devam edeceğiz.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="My Logistics Vizyonu">
+                </div>
+            </div>
+            
+            <div class="about-content" style="flex-direction: row-reverse;">
+                <div class="about-text">
+                    <h3>Misyonumuz</h3>
+                    <p>Misyonumuz, müşterilerimize ihtiyaç duydukları her noktada güvenilir, hızlı ve eksiksiz lojistik hizmetleri sunmaktır. Müşterilerimizin beklentilerini aşan bir hizmet kalitesi ile onların lojistik süreçlerindeki yüklerini hafifletmeyi ve iş süreçlerine değer katmayı amaçlıyoruz.</p>
+                    <p>Çalışanlarımızın gelişimine önem vererek, ekip ruhuyla hareket eden, müşteri memnuniyetini ön planda tutan, çevreye ve topluma karşı sorumlu bir kuruluş olarak faaliyetlerimizi sürdürmekteyiz.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="My Logistics Misyonu">
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Değerlerimiz</h3>
+                    <p><strong>Güvenilirlik:</strong> Söz verdiğimiz her işi zamanında ve eksiksiz tamamlamayı ilke ediniyoruz.</p>
+                    <p><strong>Müşteri Odaklılık:</strong> Müşterilerimizin ihtiyaçlarını anlamak ve bu ihtiyaçlara özel çözümler sunmak için sürekli iletişim halindeyiz.</p>
+                    <p><strong>Yenilikçilik:</strong> Teknolojik gelişmeleri yakından takip ederek, hizmetlerimizi sürekli geliştiriyoruz.</p>
+                    <p><strong>Sürdürülebilirlik:</strong> Çevreye saygılı, kaynak kullanımında verimli iş modelleri geliştiriyoruz.</p>
+                    <p><strong>Ekip Ruhu:</strong> Başarının ancak güçlü bir ekip çalışmasıyla mümkün olduğuna inanıyoruz.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="My Logistics Değerleri">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rakamlarla My Logistics</h2>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Hizmet Yılı</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Profesyonel Çalışan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Ofis</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Araç Filosu</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20.000+</div>
+                    <div class="stat-label">Yıllık Sevkiyat</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Kurumsal Müşteri</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10.000+</div>
+                    <div class="stat-label">m² Depolama Alanı</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Müşteri Memnuniyeti</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Yönetim Ekibimiz</h2>
+            </div>
+            
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Ahmet Yılmaz">
+                    </div>
+                    <h3 class="team-name">Ahmet Yılmaz</h3>
+                    <div class="team-position">Genel Müdür</div>
+                    <p class="team-bio">20 yılı aşkın lojistik sektörü deneyimiyle, şirketimizin vizyoner lideri. Uluslararası ticaret ve tedarik zinciri yönetiminde uzman.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Ayşe Kaya">
+                    </div>
+                    <h3 class="team-name">Ayşe Kaya</h3>
+                    <div class="team-position">Operasyon Direktörü</div>
+                    <p class="team-bio">15 yıllık operasyon yönetimi tecrübesiyle, lojistik süreçlerin optimize edilmesi ve kalite standartlarının yükseltilmesinde öncü rol oynamaktadır.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Mehmet Demir">
+                    </div>
+                    <h3 class="team-name">Mehmet Demir</h3>
+                    <div class="team-position">Finans Direktörü</div>
+                    <p class="team-bio">Finans sektöründeki 18 yıllık tecrübesiyle şirketimizin finansal stratejilerini yönetmekte ve sürdürülebilir büyümeyi desteklemektedir.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Zeynep Öztürk">
+                    </div>
+                    <h3 class="team-name">Zeynep Öztürk</h3>
+                    <div class="team-position">İK ve İdari İşler Direktörü</div>
+                    <p class="team-bio">İnsan kaynakları alanında 12 yıllık deneyimiyle, yetenek yönetimi ve kurumsal gelişim programlarının uygulanmasında uzmanlaşmıştır.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Can Aydın">
+                    </div>
+                    <h3 class="team-name">Can Aydın</h3>
+                    <div class="team-position">Satış ve Pazarlama Direktörü</div>
+                    <p class="team-bio">Satış ve pazarlama stratejilerimizi yöneterek, müşteri portföyümüzü genişleten ve marka değerimizi artıran, sektörde 14 yıllık deneyime sahip profesyonel.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/200/200" alt="Deniz Yıldız">
+                    </div>
+                    <h3 class="team-name">Deniz Yıldız</h3>
+                    <div class="team-position">Bilgi Teknolojileri Müdürü</div>
+                    <p class="team-bio">Teknoloji ve dijital dönüşüm alanında 10 yıllık tecrübesiyle, şirketimizin teknolojik altyapısını geliştiren ve inovatif çözümler üreten uzman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>My Logistics</h3>
+                    <p>Güvenilir lojistik çözüm ortağınız olarak 2010 yılından beri hizmet vermekteyiz. Kaliteli, güvenli ve hızlı taşımacılık için bizi tercih edin.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Linkler</h3>
+                    <a href="index.html">Ana Sayfa</a>
+                    <a href="hakkimizda.html">Hakkımızda</a>
+                    <a href="#">Hizmetlerimiz</a>
+                    <a href="#">İnsan Kaynakları</a>
+                    <a href="#">İletişim</a>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Adres: Lojistik Merkezi, Organize Sanayi Bölgesi, 42080 Konya</p>
+                    <p>Telefon: +90 332 123 45 67</p>
+                    <p>E-posta: info@mylogistics.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 My Logistics. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
